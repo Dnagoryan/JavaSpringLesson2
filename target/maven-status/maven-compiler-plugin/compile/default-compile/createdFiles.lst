@@ -1,0 +1,8 @@
+ru\gb\entity\Product.class
+ru\gb\service\ProductRepositoryService.class
+ru\gb\service\CartRepositoryService.class
+ru\gb\client\Client.class
+ru\gb\client\GoToShop.class
+ru\gb\config\ApplicationConfig.class
+ru\gb\repository\CartRepository.class
+ru\gb\repository\ProductRepository.class
