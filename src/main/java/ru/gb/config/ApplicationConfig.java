@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import ru.gb.repository.CartRepository;
 import ru.gb.repository.ProductRepository;
 import ru.gb.service.CartRepositoryService;
@@ -12,18 +15,20 @@ import ru.gb.service.ProductRepositoryService;
 
 @Configuration
 @ComponentScan("ru.gb")
+@EnableWebMvc
 public class ApplicationConfig {
 
-    @Bean
-    @Scope (value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public CartRepository cartRepositoryService(){
-        return new CartRepositoryService();
-    }
+    public static final String  RESOLVER_PREFIX = "/WEB-INF/view/";
+    public static final String  RESOLVER_SUFFIX = ".jsp";
+
+
 
     @Bean
-    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-    public ProductRepository productRepositoryService(){
-        return new ProductRepositoryService();
+    public ViewResolver viewResolver(){
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix(RESOLVER_PREFIX);
+        viewResolver.setSuffix(RESOLVER_SUFFIX);
+        return viewResolver;
     }
 
 }
