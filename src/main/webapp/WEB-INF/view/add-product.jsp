@@ -15,7 +15,7 @@
 <h1>Create new product</h1>
 <br>
 <%--@elvariable id="product" type="ru.gb.entity.Product"--%>
-<form:form  action="create"  modelAttribute="product">
+<form:form  action="add"  modelAttribute="product">
     <form:hidden path="id" value="${product.id}"/>
     Title:<form:input path="title"/>
     <br>

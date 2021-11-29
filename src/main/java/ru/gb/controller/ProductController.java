@@ -28,16 +28,16 @@ public class ProductController {
 
 
     //метод создания формы
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String showSimpleForm(Product product){
         productService.addProduct(product);
-        return "add-product";
+        return "redirect:/shop/create";
     }
 //new
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String showSimpleForm(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
-        return "main-menu";
+        return "add-product";
     }
 }
