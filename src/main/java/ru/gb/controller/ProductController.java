@@ -33,7 +33,7 @@ public class ProductController {
         productService.addProduct(product);
         return "add-product";
     }
-
+//new
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String showSimpleForm(Model model) {
         Product product = new Product();
