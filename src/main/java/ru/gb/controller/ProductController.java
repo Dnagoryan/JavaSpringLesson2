@@ -20,8 +20,8 @@ public class ProductController {
 
 
     //создание новой корзины
-    @RequestMapping(value = "/create", method = RequestMethod.POST )
-    public String createdNewCart(Model model){
+    @RequestMapping(value = "/create", method = RequestMethod.GET )
+    public String getAllProduct(Model model){
         model.addAttribute("products", productService.getAll());
         return "main-menu";
     }
@@ -29,11 +29,15 @@ public class ProductController {
 
     //метод создания формы
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String showSimpleForm(Model model){
-        Product product = new Product();
-        model.addAttribute("product", product);
+    public String showSimpleForm(Product product){
         productService.addProduct(product);
         return "add-product";
     }
 
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String showSimpleForm(Model model) {
+        Product product = new Product();
+        model.addAttribute("product", product);
+        return "main-menu";
+    }
 }
