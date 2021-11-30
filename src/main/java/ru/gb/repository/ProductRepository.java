@@ -2,11 +2,12 @@ package ru.gb.repository;
 
 import ru.gb.entity.Product;
 
+import java.util.List;
 import java.util.Map;
 
 public interface ProductRepository {
 
-    Map<Integer, Product>  getAll();
+    List<Product> getAll();
 
     Product findById(Integer id);
 

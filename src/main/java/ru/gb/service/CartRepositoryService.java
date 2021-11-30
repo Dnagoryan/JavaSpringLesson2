@@ -2,6 +2,7 @@ package ru.gb.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.gb.entity.Product;
 import ru.gb.repository.CartRepository;
 import ru.gb.repository.ProductRepository;
@@ -10,7 +11,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Service
 public class CartRepositoryService implements CartRepository {
 
 
@@ -38,14 +39,12 @@ public class CartRepositoryService implements CartRepository {
     @Override
     public void deleteProduct(Integer id) {
         Product product = repository.findById(id);
-        if (cart.contains(product)) {
-            int index = cart.indexOf(product);
-            int quantity = cart.get(index).getQuantity();
-            if (quantity >= 2) {
-                cart.get(index).setQuantity(quantity-1);
-            }else {
-                cart.remove(product);
-            }
+        //            int index = cart.indexOf(product);
+        //            String quantity = cart.get(index).getQuantity();
+        //            if (quantity >= 2) {
+        //                cart.get(index).setQuantity(quantity-1);
+        //            }else {
+        cart.remove(product);
         }
     }
-}
+
